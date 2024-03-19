@@ -1,17 +1,19 @@
-package main
+package thirdparty
 
 import (
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
-	"tgBotIP/types"
+	"tgBotIP/internal/env"
+	"tgBotIP/internal/types"
 )
 
-func request() (types.Site, error) {
+func Request() (types.Site, error) {
 	{
 		client := &http.Client{}
-		req, err := http.NewRequest("GET", "https://ifconfig.co", nil)
+		parseEnv := env.ParseEnv("IP_REQUEST_ADDRESS")
+		req, err := http.NewRequest("GET", parseEnv, nil)
 		if err != nil {
 			fmt.Println(err)
 		}
