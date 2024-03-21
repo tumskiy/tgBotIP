@@ -1,5 +1,6 @@
 package types
 
+// Site Структура инфы с сайта
 type Site struct {
 	IP         string  `json:"ip"`
 	IPDecimal  int     `json:"ip_decimal"`

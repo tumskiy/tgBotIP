@@ -29,7 +29,8 @@ func Run() {
 			switch update.Message.Command() {
 
 			case "ip":
-				exist, err := database.ExistUser(update.Message.Chat.ID)
+				fmt.Println("select exist user")
+				exist, err := database.ExistUser(update.Message.From.ID)
 				if err != nil {
 					tgbotapi.NewMessage(update.Message.Chat.ID, parseEnvErr)
 				}
@@ -38,6 +39,7 @@ func Run() {
 					if err != nil {
 						return
 					}
+					fmt.Println("user exist")
 				} else {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
 					msg.ReplyToMessageID = update.Message.MessageID
