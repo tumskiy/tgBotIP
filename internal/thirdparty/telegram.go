@@ -51,7 +51,7 @@ func Run() {
 				}
 
 			case "password":
-				parseEnvParse := env.ParseEnv("ACCESS_PASSWORD")
+				parseEnvPassword := env.ParseEnv("ACCESS_PASSWORD")
 				password := strings.TrimPrefix(update.Message.Text, "/password ")
 				user := types.User{
 					ID:       update.Message.From.ID,
@@ -60,7 +60,7 @@ func Run() {
 					Password: password,
 					ChatID:   update.Message.Chat.ID,
 				}
-				if password == parseEnvParse {
+				if password == parseEnvPassword {
 					err := database.CreateUser(user)
 					msg := tgbotapi.NewMessage(user.ChatID, update.Message.Text)
 					msg.ReplyToMessageID = user.Replay
