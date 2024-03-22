@@ -3,11 +3,11 @@ package main
 import (
 	"tgBotIP/internal/database"
 	"tgBotIP/internal/env"
-	"tgBotIP/internal/thirdparty"
+	"tgBotIP/internal/interaction"
 )
 
 func main() {
 	database.Init()
 	env.Init()
-	thirdparty.Run()
+	interaction.Run()
 }
