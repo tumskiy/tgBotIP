@@ -3,13 +3,19 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/mattn/go-sqlite3"
 	"tgBotIP/internal/types"
+
+	_ "github.com/mattn/go-sqlite3"
 )
+
+type Databaser interface {
+	ExistUser(int64) (bool, error)
+	CreateUser(types.User) error
+}
 
 var db *sql.DB
 
-func Init() {
+func init() {
 	var err error
 	db, err = sql.Open("sqlite3", "./database/store.db") //
 	if err != nil {

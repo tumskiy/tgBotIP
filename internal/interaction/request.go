@@ -9,7 +9,11 @@ import (
 	"tgBotIP/internal/types"
 )
 
-func Request() (types.Site, error) {
+type Req struct {
+	types.Site
+}
+
+func (r *Req) Request() (types.Site, error) {
 	{
 		client := &http.Client{}
 		parseEnv := env.ParseEnv("IP_REQUEST_ADDRESS")

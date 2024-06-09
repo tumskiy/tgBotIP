@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func Init() {
+func init() {
 	if err := godotenv.Load(); err != nil {
 		log.Print("not find .env file")
 	}
